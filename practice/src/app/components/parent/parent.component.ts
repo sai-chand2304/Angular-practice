@@ -19,32 +19,27 @@ export class ParentComponent {
   ];
 
   message:string="Hi, message in parent component";
+
+  changed(todo:Todo){
+    console.log(`Todo ${todo.id} is marked as completed`);
+  }
+
   newTodo: Todo = {
     id: 0,
     title: '',
     completed: false
   };
 
-  changed(todo:Todo){
-    console.log(`Todo ${todo.id} is marked as completed`);
-  }
-
   addTodo() {
     if (this.newTodo.title.trim()) {
       // Calculate next ID based on the highest existing ID
       const nextId = Math.max(...this.todos.map(todo => todo.id), 0) + 1;
-      
-      // Create new todo with auto-incremented ID and default completed as false
       const todoToAdd: Todo = {
         id: nextId,
         title: this.newTodo.title,
         completed: false
       };
-
-      // Add to todos array
       this.todos.push(todoToAdd);
-
-      // Reset the form
       this.newTodo = {
         id: 0,
         title: '',
