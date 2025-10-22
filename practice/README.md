@@ -25,3 +25,45 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+
+## Commands 
+1. install node (check node -v)
+2. install typescript 
+(npm install -g typescript)
+tsc -v
+3. install angular 
+(npm install -g @angular/cli@version)
+ng -v
+4. ng new project-name => to create project name
+
+## git command
+
+git status
+git add .
+git add <filename>
+
+git commit -m "your message"
+
+git status                    # Check status of working directory
+git branch                    # See current branch
+git checkout -b <name>        # Create and switch to new branch
+git push origin <branch-name> # Push commits to remote branch
+
+# we need to set up the remote repository
+git remote -v  
+
+git init
+
+# adding remote
+git remote add origin YOUR_REPOSITORY_URL
+
+# stage all changes
+git add .       
+
+# committing
+git commit -m "Initial commit"
+
+# pushing to remote
+git push -u origin main             
