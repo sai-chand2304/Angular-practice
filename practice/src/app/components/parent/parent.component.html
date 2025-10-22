@@ -3,3 +3,16 @@
             (todoChanged)="changed($event)"
             [todos]="todos"
 ></app-child>
+
+
+<h1>Add Todo</h1>
+<form (ngSubmit)="addTodo()" #todoForm="ngForm">
+    <div>
+        <input type="text" 
+               [(ngModel)]="newTodo.title" 
+               name="title" 
+               placeholder="Enter todo title" 
+               required />
+        <button type="submit" [disabled]="!todoForm.valid">Add Todo</button>
+    </div>
+</form>
