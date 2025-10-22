@@ -1,1 +1,11 @@
 <p>this is in child component: {{childMessage}}</p>
+<ol>
+    <li *ngFor="let todo of todos">
+        <p>{{todo.title}}</p>
+        <button [disabled]="todo.completed"
+                (click)="markAsDone(todo.id)"
+        >
+            {{todo.completed?'Done':'Mark as Complete'}}
+        </button>
+    </li>
+</ol>

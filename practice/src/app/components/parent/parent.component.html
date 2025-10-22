@@ -1,2 +1,5 @@
 <p>parent works!</p>
-<app-child [childMessage]="message"></app-child>
+<app-child [childMessage]="message"
+            (todoChanged)="changed($event)"
+            [todos]="todos"
+></app-child>
