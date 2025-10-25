@@ -13,6 +13,6 @@
                 name="title"
                 placeholder="Enter todo title"
                 required />
-        <button type="submit" [disabled]="todoForm.valid">Add todo</button>
+        <button type="submit" [disabled]="!todoForm.valid">Add todo</button>
     </div>
 </form>
