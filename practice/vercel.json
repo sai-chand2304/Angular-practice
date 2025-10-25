@@ -4,7 +4,10 @@
         {
             "src": "package.json",
             "use": "@vercel/static-build",
-            "config": { "distDir": "dist/practice" }
+            "config": { 
+                "distDir": "dist/practice",
+                "buildCommand": "npm run vercel-build"
+            }
         }
     ],
     "routes": [
