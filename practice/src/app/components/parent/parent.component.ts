@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ChildComponent } from '../child/child.component';
 import { Todo } from '../../interfaces/Todo';
 import { FormsModule } from '@angular/forms';
+import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-parent',
@@ -10,13 +11,16 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './parent.component.html',
   styleUrl: './parent.component.css'
 })
-export class ParentComponent {
+export class ParentComponent implements OnInit {
 
-  todos:Todo[]=[
-    {id:1, title:'Learn Angular', completed:false},
-    {id:2, title:'Build an App', completed:false},
-    {id:3, title:'Deploy the App', completed:false}
-  ];
+  
+  constructor(private toDoService:TodoService){}
+
+  ngOnInit(): void {
+    this.fetchTodos();
+  }
+
+  todos:Todo[]=[];
 
   message:string="Hi, message in parent component";
 
@@ -30,21 +34,31 @@ export class ParentComponent {
     completed: false
   };
 
+  fetchTodos(){
+    this.toDoService.getTodos().subscribe({
+      next:(data)=>this.todos=data.slice(0,5),
+      error:(err)=>console.error("erroe fetching todos:",err)
+    })
+  }
   addTodo() {
     if (this.newTodo.title.trim()) {
-      // Calculate next ID based on the highest existing ID
-      const nextId = Math.max(...this.todos.map(todo => todo.id), 0) + 1;
-      const todoToAdd: Todo = {
-        id: nextId,
-        title: this.newTodo.title,
-        completed: false
-      };
-      this.todos.push(todoToAdd);
-      this.newTodo = {
-        id: 0,
-        title: '',
-        completed: false
-      };
+      this.toDoService.addTodo(this.newTodo).subscribe({
+        next:(newTodo)=>{
+            this.todos.push(newTodo);
+            this.newTodo = {
+            id: 0,
+            title: '',
+            completed: false
+          };
+        },
+        error:(err)=>{console.error('Error adding todo:',err)}
+      });
+      // const todoToAdd: Todo = {
+      //   id: nextId,
+      //   title: this.newTodo.title,
+      //   completed: false
+      // };
+      
     }
   }
 }
