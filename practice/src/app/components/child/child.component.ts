@@ -13,6 +13,8 @@ import { CommonModule } from '@angular/common';
 export class ChildComponent {
   @Input() childMessage!: string;
   @Input() todos: Todo[] = [];
+  @Input() pending: any[] = [];
+  @Input() completed: any[] = [];
   @Output() todoChanged = new EventEmitter<Todo>();
 
   markAsDone(id: number) {

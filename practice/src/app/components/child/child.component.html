@@ -9,3 +9,26 @@
         </button>
     </li>
 </ol>
+
+<!-- <div class="board">
+    <div class="colums">
+    <div class="column">
+        <h3>Pending</h3>
+        <div *ngFor="let task of pending" class="card">
+            <p><strong>{{task.title}}</strong></p>
+            <p>Assigned to: {{task.userName}}</p>
+             <button (click)="markAsDone(task.id)">Mark as Complete</button>
+        </div>
+    </div>
+    <div class="column">
+        <h3>Completed</h3>
+        <div *ngFor="let task of completed" class="card">
+            <p><strong>{{task.title}}</strong></p>
+            <p>Assigned to: {{task.userName}}</p>
+            <button (click)="markAsDone(task.id)">Mark as Complete</button>
+        </div>
+    </div>
+
+</div>
+</div> -->
+<ng-content></ng-content>

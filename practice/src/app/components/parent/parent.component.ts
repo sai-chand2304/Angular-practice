@@ -15,9 +15,18 @@ export class ParentComponent implements OnInit {
 
   
   constructor(private toDoService:TodoService){}
-
+  pending:any[]=[];
+  completed:any[]=[];
   ngOnInit(): void {
     this.fetchTodos();
+
+    // this.toDoService.getTasksWithUsers().subscribe({
+    //   next:(tasks)=>{
+    //     this.pending=tasks.slice(0,5).filter(t=>!t.completed);
+    //     this.completed=tasks.slice(0,5).filter(t=>t.completed);
+    //   },
+    //   error:err=>console.error('Error fetching tasks with users:',err)
+    // });
   }
 
   todos:Todo[]=[];
@@ -61,4 +70,6 @@ export class ParentComponent implements OnInit {
       
     }
   }
+
+
 }

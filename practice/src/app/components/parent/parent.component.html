@@ -2,7 +2,11 @@
 <app-child [childMessage]="message"
             (todoChanged)="changed($event)"
             [todos]="todos"
-></app-child>
+            [pending]="pending"
+            [completed]="completed"
+        >
+<p>This is using ng-content: Projecting from parent component</p>        
+</app-child>
 
 
 <h1>Add Todo</h1>
